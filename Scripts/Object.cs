@@ -3,38 +3,68 @@ using System;
 
 public abstract partial class Object : CharacterBody2D
 {
+    private static int SPEED_MULTIPLIER = 50;
+
     public int Power = 100;
-    public int V = 0;
-    protected int VMAX = 15;
 
-    protected int Tick = 0;
+    private int Tick = 10;
 
-    protected abstract Tuple<float, int> Decide();
+    public override void _Ready()
+    {
+        SavePosition();
+    }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (Timer.Ticknew > Tick)
+        if (Common.Tick > Tick)
         {
-            Tick = Timer.Ticknew;
-            Tuple<float, int> angleSpeed = Decide();
-            float alpha = angleSpeed.Item1;
-            Velocity = Transform.X * 50 * angleSpeed.Item2;
-            Rotate(alpha - Transform.Rotation);
+            Tick = Common.Tick;
+            ChangeSpeedAndDirection();
         }
         bool moved = MoveAndSlide();
     }
 
-    protected int ChangeSpeed(int V)
+    private void ChangeSpeedAndDirection()
     {
-        if (Power <= 10)
-        {
-            V = 0;
-        }
-        return V;
+        Tuple<float, int> angleSpeed = ChooseNewSpeedAndDir();
+        float alpha = angleSpeed.Item1;
+        int speed = angleSpeed.Item2;
+
+        Rotate(alpha - Transform.Rotation);
+        Velocity = Transform.X * SPEED_MULTIPLIER * speed;
+
+        IncreasePower(speed);
     }
 
+    private Tuple<float, int> ChooseNewSpeedAndDir()
+    {
+        if (Common.Stopped())
+        {
+            return new Tuple<float, int>(0, 0);
+        }
+
+        SavePosition();
+        float x = Position.X;
+        float y = Position.Y;
+        float opponentX = GetOpponentCoordinates().X;
+        float opponentY = GetOpponentCoordinates().Y;
+
+        if (GetController().Collides(x, y, opponentX, opponentY))
+        {
+            Common.StopGame();
+            return new Tuple<float, int>(0, 0);
+        }
+        else
+        {
+            return GetController().Decision(x, y, Rotation, opponentX, opponentY, Power);
+        }
+    }
+    protected abstract Vector2 GetOpponentCoordinates();
+    protected abstract Controller GetController();
+    protected abstract void SavePosition();
     protected abstract int Rashod(int V);
-    protected void IncreasePower(int V)
+
+    private void IncreasePower(int V)
     {
         int R = Rashod(V);
         Power = Power + R;

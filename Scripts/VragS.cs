@@ -1,7 +1,4 @@
 using Godot;
-using System;
-using System.Diagnostics;
-using System.Threading;
 
 public partial class VragS : Object
 {
@@ -9,26 +6,22 @@ public partial class VragS : Object
 
     public override void _Ready()
     {
-        controller = new VragController(0,0,1150,650);
+        controller = new VragController(0, 0, 1150, 650);
     }
 
-    protected override Tuple<float, int> Decide()
+    protected override void SavePosition()
     {
-        Timer.vrag = Position;
-        float x = Position.X;
-        float y = Position.Y;
-        float geroiX = Timer.geroi.X;
-        float geroiY = Timer.geroi.Y;
-        if (!controller.collapse(x, y, geroiX, geroiY))
-        {
-            float angle = Rotation;
-            return controller.Decision(x, y, angle, geroiX, geroiY, Power);
-        }
-        else
-        {
-            Console.WriteLine("catch " + Timer.Ticknew);
-            return new Tuple<float, int>(0, 0);
-        }
+        Common.vrag = Position;
+    }
+
+    protected override Vector2 GetOpponentCoordinates()
+    {
+        return Common.geroi;
+    }
+
+    protected override Controller GetController()
+    {
+        return controller;
     }
 
     protected override int Rashod(int V)

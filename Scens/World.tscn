@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://Scripts/VragS.cs" id="1_0m037"]
 [ext_resource type="Texture2D" uid="uid://pow8qukt0ys" path="res://icon.svg" id="1_5aqtp"]
-[ext_resource type="Script" path="res://Scripts/Timer.cs" id="1_m4rjm"]
+[ext_resource type="Script" path="res://Scripts/Common.cs" id="1_ts4w3"]
 [ext_resource type="Script" path="res://Scripts/GgS.cs" id="3_c8hp7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84v3q"]
 size = Vector2(122, 124)
 
 [node name="Node" type="Node"]
-script = ExtResource("1_m4rjm")
+script = ExtResource("1_ts4w3")
 
 [node name="Vrag" type="CharacterBody2D" parent="."]
 position = Vector2(229, 124)
