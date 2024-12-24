@@ -17,8 +17,9 @@ public abstract partial class Object : CharacterBody2D
         {
             Tick = Timer.Ticknew;
             Tuple<float, int> angleSpeed = Decide();
+            float alpha = angleSpeed.Item1;
             Velocity = Transform.X * 50 * angleSpeed.Item2;
-            Rotate(angleSpeed.Item1);
+            Rotate(alpha - Transform.Rotation);
         }
         bool moved = MoveAndSlide();
     }

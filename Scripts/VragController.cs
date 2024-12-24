@@ -4,31 +4,19 @@ using System;
 public partial class VragController : Controller
 {
     static int DMIN = 1;
-    public VragController(int x0, int y0, int xMax, int yMax) : base(x0, y0, xMax, yMax)
+    public VragController(float x0, float y0, float xMax, float yMax) : base(x0, y0, xMax, yMax)
     {
     }
 
-    public override Tuple<float, int> Decision(int x, int y, float angle, int otherX, int otherY, int health)
+    public override Tuple<float, int> Decision(float x, float y, float angle, float otherX, float otherY, int health)
     {
         float alpha = 0f;
-        int dx = x - otherX;
-        int dy = y - otherY;
-        if (Mathf.Abs(dx) < DMIN)
-        {
-            if (dy > 0)
-            {
-                alpha = Mathf.Pi / 2;
-            }
-            else
-            {
-                alpha = - Mathf.Pi / 2;
-            }
-        }
-        else
-        {
-            alpha = Mathf.Atan(1.0f * dy / dx);
-        }
-        Console.WriteLine("dy = " + dy + "; dx = " + dx + "; alpha = " + alpha);
+        float dx = otherX - x;
+        float dy = otherY - y;
+
+        alpha = Mathf.Atan2(dy, dx);
+      
+        Console.WriteLine("vx = " + x + "; vy = " + y + "; gx = " + otherX + "; gy" + otherY + "; dy = " + dy + "; dx = " + dx + "; alpha = " + alpha);
         return new Tuple<float, int>(alpha, 2);
     }
 }

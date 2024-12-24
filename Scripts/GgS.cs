@@ -14,10 +14,10 @@ public partial class GgS : Object
     protected override Tuple<float, int> Decide()
     {
         Timer.geroi = Position;
-        int x = (int)Position.X;
-        int y = (int)Position.Y;
-        int vragX = (int)Timer.vrag.X;
-        int vragY = (int)Timer.vrag.Y;
+        float x = Position.X;
+        float y = Position.Y;
+        float vragX = Timer.vrag.X;
+        float vragY = Timer.vrag.Y;
         if (!controller.collapse(x, y, vragX, vragY))
         {
             float angle = Rotation;

@@ -12,7 +12,7 @@ size = Vector2(122, 124)
 script = ExtResource("1_m4rjm")
 
 [node name="Vrag" type="CharacterBody2D" parent="."]
-position = Vector2(231, 281)
+position = Vector2(229, 124)
 script = ExtResource("1_0m037")
 
 [node name="Sprite2D" type="Sprite2D" parent="Vrag"]

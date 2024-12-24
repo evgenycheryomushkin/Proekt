@@ -15,10 +15,10 @@ public partial class VragS : Object
     protected override Tuple<float, int> Decide()
     {
         Timer.vrag = Position;
-        int x = (int)Position.X;
-        int y = (int)Position.Y;
-        int geroiX = (int)Timer.geroi.X;
-        int geroiY = (int)Timer.geroi.Y;
+        float x = Position.X;
+        float y = Position.Y;
+        float geroiX = Timer.geroi.X;
+        float geroiY = Timer.geroi.Y;
         if (!controller.collapse(x, y, geroiX, geroiY))
         {
             float angle = Rotation;
