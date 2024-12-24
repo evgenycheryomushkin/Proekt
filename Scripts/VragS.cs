@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 using System.Threading;
 
 public partial class VragS : Object
@@ -8,7 +9,7 @@ public partial class VragS : Object
 
     public override void _Ready()
     {
-        controller = new GeroiController(0, 0, 1150, 650);
+        controller = new VragController(0,0,1150,650);
     }
 
     protected override Tuple<float, int> Decide()
@@ -25,6 +26,7 @@ public partial class VragS : Object
         }
         else
         {
+            Console.WriteLine("catch " + Timer.Ticknew);
             return new Tuple<float, int>(0, 0);
         }
     }

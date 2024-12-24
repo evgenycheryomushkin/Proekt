@@ -9,9 +9,6 @@ public partial class GeroiController : Controller
 
     public override Tuple<float, int> Decision(int x, int y, float angle, int otherX, int otherY, int health)
     {
-        return new Tuple<float, int>(0, 1);
-
-
-
+        return new Tuple<float, int>(0.1f, 0);
     }
 }

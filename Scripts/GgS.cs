@@ -8,7 +8,7 @@ public partial class GgS : Object
 
     public override void _Ready()
     {
-        controller = new VragController(0,0,1150,650);
+        controller = new GeroiController(0, 0, 1150, 650);
     }
 
     protected override Tuple<float, int> Decide()
