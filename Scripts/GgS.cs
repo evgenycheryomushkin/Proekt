@@ -6,7 +6,7 @@ public partial class GgS : Object
 
     public override void _Ready()
     {
-        controller = new GeroiController(0, 0, 1150, 650);
+        controller = new GeroiCircleController(0, 0, 1150, 650);
     }
 
     protected override void SavePosition()
