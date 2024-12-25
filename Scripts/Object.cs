@@ -7,8 +7,6 @@ public abstract partial class Object : CharacterBody2D
 
     public int Power = 100;
 
-    private int Tick = 10;
-
     public override void _PhysicsProcess(double delta)
     {
         MoveAndSlide();

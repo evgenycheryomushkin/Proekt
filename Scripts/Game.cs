@@ -36,7 +36,7 @@ public partial class Game : Node
     {
         if (Stopped) { return; }
 
-        if (Common.Collides(geroi.Position.X, geroi.Position.Y, vrag.Position.X, vrag.Position.Y))
+        if (Common.Collides(geroi.Position.X, geroi.Position.Y, vrag.Position.X, vrag.Position.Y) || Tick >= 600)
         {
             StopGame();
         } else
