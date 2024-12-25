@@ -1,38 +1,14 @@
 using Godot;
 using System;
 
-public partial class Common : Node
+public partial class Common     
 {
-    private ulong StartTime;
-    private int Shag = 100; //milliseconds
-    public static int Tick = 0;
-    private static bool Stop = false;
-
-    public static Vector2 vrag;
-    public static Vector2 geroi;
-
-    public override void _Ready()
+    private static int MIN_DISTANCE = 80;
+    public static bool Collides(float x1, float y1, float x2, float y2)
     {
-        StartTime = Time.GetTicksMsec();
-    }
-
-    public static void StopGame()
-    {
-        if (!Stop)
-        {
-            Stop = true;
-            Console.WriteLine("Time: " + Tick);
-        }
-    }
-
-    public static bool Stopped()
-    {
-        return Stop;
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        ulong time = Time.GetTicksMsec();
-        Tick = ((int)(time - StartTime)) / Shag;
+        float dx = x1 - x2;
+        float dy = y1 - y2;
+        float d2 = dx * dx + dy * dy;
+        return d2 < MIN_DISTANCE * MIN_DISTANCE;
     }
 }

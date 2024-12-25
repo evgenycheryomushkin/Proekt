@@ -6,17 +6,13 @@ public partial class VragS : Object
 
     public override void _Ready()
     {
-        controller = new VragController(0, 0, 1150, 650);
-    }
-
-    protected override void SavePosition()
-    {
-        Common.vrag = Position;
+        Game.vrag = this;
+        controller = new VragController(0, 0, 600, 600);
     }
 
     protected override Vector2 GetOpponentCoordinates()
     {
-        return Common.geroi;
+        return Game.geroi.Position;
     }
 
     protected override Controller GetController()

@@ -16,7 +16,7 @@ public partial class GeroiController : Controller
         cy = y0 + (yMax - y0) / 2;
     }
 
-    public override Tuple<float, int> Decision(float x, float y, float angle, float otherX, float otherY, int health)
+    public override Tuple<float, int> ChooseAngleAndSpeed(float x, float y, float angle, float otherX, float otherY, int health)
     {
         float dx1 = cx - x;
         float dy1 = cy - y;

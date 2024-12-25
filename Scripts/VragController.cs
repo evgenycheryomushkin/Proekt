@@ -7,7 +7,7 @@ public partial class VragController : Controller
     {
     }
 
-    public override Tuple<float, int> Decision(float x, float y, float angle, float otherX, float otherY, int health)
+    public override Tuple<float, int> ChooseAngleAndSpeed(float x, float y, float angle, float otherX, float otherY, int health)
     {
         float dx = otherX - x;
         float dy = otherY - y;

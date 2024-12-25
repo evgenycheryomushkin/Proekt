@@ -12,20 +12,6 @@ public abstract partial class Controller
         this.yMax = yMax;
     }
 
-    public bool Collides(float x1, float y1, float x2, float y2)
-    {
-        float dx = x1 - x2;
-        float dy = y1 - y2;
-        float d2 = dx * dx + dy * dy;
-        if (d2 < 20000) 
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public abstract Tuple<float, int> Decision(float x, float y, float angle, float otherX, float otherY, int health);
+    public abstract Tuple<float, int> ChooseAngleAndSpeed(float x, float y, 
+        float angle, float otherX, float otherY, int health);
 }

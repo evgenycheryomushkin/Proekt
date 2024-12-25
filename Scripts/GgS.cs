@@ -6,17 +6,13 @@ public partial class GgS : Object
 
     public override void _Ready()
     {
-        controller = new GeroiCircleController(0, 0, 1150, 650);
-    }
-
-    protected override void SavePosition()
-    {
-        Common.geroi = Position;
+        Game.geroi = this;
+        controller = new GeroiCircleController(0, 0, 600, 600);
     }
 
     protected override Vector2 GetOpponentCoordinates()
     {
-        return Common.vrag;
+        return Game.vrag.Position;
     }
 
     protected override Controller GetController()

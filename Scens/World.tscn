@@ -1,18 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://cld6lauk5j67s"]
 
 [ext_resource type="Script" path="res://Scripts/VragS.cs" id="1_0m037"]
+[ext_resource type="Script" path="res://Scripts/Game.cs" id="1_3eulm"]
 [ext_resource type="Texture2D" uid="uid://pow8qukt0ys" path="res://icon.svg" id="1_5aqtp"]
-[ext_resource type="Script" path="res://Scripts/Common.cs" id="1_ts4w3"]
 [ext_resource type="Script" path="res://Scripts/GgS.cs" id="3_c8hp7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84v3q"]
 size = Vector2(122, 124)
 
 [node name="Node" type="Node"]
-script = ExtResource("1_ts4w3")
+script = ExtResource("1_3eulm")
 
 [node name="Vrag" type="CharacterBody2D" parent="."]
-position = Vector2(229, 124)
+position = Vector2(340, 293)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_0m037")
 
 [node name="Sprite2D" type="Sprite2D" parent="Vrag"]
@@ -23,7 +24,8 @@ shape = SubResource("RectangleShape2D_84v3q")
 one_way_collision_margin = 0.0
 
 [node name="Gg" type="CharacterBody2D" parent="."]
-position = Vector2(897, 287)
+position = Vector2(547, 290)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("3_c8hp7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Gg"]
