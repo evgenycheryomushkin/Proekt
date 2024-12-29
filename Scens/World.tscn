@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cld6lauk5j67s"]
+[gd_scene load_steps=8 format=3 uid="uid://cld6lauk5j67s"]
 
 [ext_resource type="Script" path="res://Scripts/VragS.cs" id="1_0m037"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_3eulm"]
 [ext_resource type="Texture2D" uid="uid://pow8qukt0ys" path="res://icon.svg" id="1_5aqtp"]
+[ext_resource type="Texture2D" uid="uid://boj0vg3lvk2as" path="res://Враг.png" id="3_byusc"]
 [ext_resource type="Script" path="res://Scripts/GgS.cs" id="3_c8hp7"]
+[ext_resource type="Texture2D" uid="uid://dp7db16ne7og5" path="res://Фон.png" id="6_jgnr6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84v3q"]
 size = Vector2(122, 124)
@@ -17,7 +19,7 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_0m037")
 
 [node name="Sprite2D" type="Sprite2D" parent="Vrag"]
-texture = ExtResource("1_5aqtp")
+texture = ExtResource("3_byusc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vrag"]
 shape = SubResource("RectangleShape2D_84v3q")
@@ -34,3 +36,8 @@ texture = ExtResource("1_5aqtp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gg"]
 shape = SubResource("RectangleShape2D_84v3q")
 one_way_collision_margin = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(303, 300)
+texture = ExtResource("6_jgnr6")
