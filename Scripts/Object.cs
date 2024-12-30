@@ -5,16 +5,18 @@ public abstract partial class Object : CharacterBody2D
 {
 	private static int SPEED_MULTIPLIER = 50;
 
-	public int Power = 100;
+	public static int MAX_HEALTH = 900;
+
+	public int Power = MAX_HEALTH;
 
 	public override void _PhysicsProcess(double delta)
 	{
 		MoveAndSlide();
 	}
 
-	internal void ChangeSpeedAndDirection()
+	internal void ChangeSpeedAndDirection(int Tick)
 	{
-		Tuple<float, int> angleSpeed = ChooseNewSpeedAndDir();
+		Tuple<float, int> angleSpeed = ChooseNewSpeedAndDir(Tick);
 		float alpha = angleSpeed.Item1;
 		int speed = angleSpeed.Item2;
 		IncreasePower(speed);
@@ -27,15 +29,17 @@ public abstract partial class Object : CharacterBody2D
 		Velocity = Vector2.Zero;
 	}
 
-	private Tuple<float, int> ChooseNewSpeedAndDir()
+	private Tuple<float, int> ChooseNewSpeedAndDir(int Tick)
 	{
 		float x = Position.X;
 		float y = Position.Y;
 		float opponentX = GetOpponentCoordinates().X;
 		float opponentY = GetOpponentCoordinates().Y;
 
-		return GetController().ChooseAngleAndSpeed(x, y, Rotation, opponentX, opponentY, Power);
+		return GetController().ChooseAngleAndSpeed(x, y, Rotation, opponentX, opponentY, 
+			Power, Tick);
 	}
+	
 	protected abstract Vector2 GetOpponentCoordinates();
 	protected abstract Controller GetController();
 	protected abstract int Rashod(int V);
@@ -44,9 +48,9 @@ public abstract partial class Object : CharacterBody2D
 	{
 		int R = Rashod(V);
 		Power = Power + R;
-		if (Power > 100)
+		if (Power > MAX_HEALTH)
 		{
-			Power = 100;
+			Power = MAX_HEALTH;
 		}
 	}
 }
