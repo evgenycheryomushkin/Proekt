@@ -3,50 +3,54 @@ using System;
 
 public abstract partial class Object : CharacterBody2D
 {
-    private static int SPEED_MULTIPLIER = 50;
+	private static int SPEED_MULTIPLIER = 50;
 
-    public int Power = 100;
+	public static int MAX_HEALTH = 900;
 
-    public override void _PhysicsProcess(double delta)
-    {
-        MoveAndSlide();
-    }
+	public int Power = MAX_HEALTH;
 
-    internal void ChangeSpeedAndDirection()
-    {
-        Tuple<float, int> angleSpeed = ChooseNewSpeedAndDir();
-        float alpha = angleSpeed.Item1;
-        int speed = angleSpeed.Item2;
-        IncreasePower(speed);
+	public override void _PhysicsProcess(double delta)
+	{
+		MoveAndSlide();
+	}
 
-        Rotate(alpha - Transform.Rotation);
-        Velocity = Transform.X * SPEED_MULTIPLIER * speed;
-    }
-    internal void Stop()
-    {
-        Velocity = Vector2.Zero;
-    }
+	internal void ChangeSpeedAndDirection(int Tick)
+	{
+		Tuple<float, int> angleSpeed = ChooseNewSpeedAndDir(Tick);
+		float alpha = angleSpeed.Item1;
+		int speed = angleSpeed.Item2;
+		IncreasePower(speed);
 
-    private Tuple<float, int> ChooseNewSpeedAndDir()
-    {
-        float x = Position.X;
-        float y = Position.Y;
-        float opponentX = GetOpponentCoordinates().X;
-        float opponentY = GetOpponentCoordinates().Y;
+		Rotate(alpha - Transform.Rotation);
+		Velocity = Transform.X * SPEED_MULTIPLIER * speed;
+	}
+	internal void Stop()
+	{
+		Velocity = Vector2.Zero;
+	}
 
-        return GetController().ChooseAngleAndSpeed(x, y, Rotation, opponentX, opponentY, Power);
-    }
-    protected abstract Vector2 GetOpponentCoordinates();
-    protected abstract Controller GetController();
-    protected abstract int Rashod(int V);
+	private Tuple<float, int> ChooseNewSpeedAndDir(int Tick)
+	{
+		float x = Position.X;
+		float y = Position.Y;
+		float opponentX = GetOpponentCoordinates().X;
+		float opponentY = GetOpponentCoordinates().Y;
 
-    private void IncreasePower(int V)
-    {
-        int R = Rashod(V);
-        Power = Power + R;
-        if (Power > 100)
-        {
-            Power = 100;
-        }
-    }
+		return GetController().ChooseAngleAndSpeed(x, y, Rotation, opponentX, opponentY, 
+			Power, Tick);
+	}
+	
+	protected abstract Vector2 GetOpponentCoordinates();
+	protected abstract Controller GetController();
+	protected abstract int Rashod(int V);
+
+	private void IncreasePower(int V)
+	{
+		int R = Rashod(V);
+		Power = Power + R;
+		if (Power > MAX_HEALTH)
+		{
+			Power = MAX_HEALTH;
+		}
+	}
 }
