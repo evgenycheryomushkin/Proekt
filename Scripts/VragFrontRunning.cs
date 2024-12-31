@@ -11,9 +11,9 @@ public partial class VragFrontRunning : Controller
     private float lastotherX = 0.0f;
     private float lastotherY = 0.0f;
 
-    public VragFrontRunning(float x0, float y0, float xMax, float yMax) : base(x0, y0, xMax, yMax)
-    {
-    }
+	public VragFrontRunning(float x0, float y0, float xMax, float yMax) : base(x0, y0, xMax, yMax)
+	{
+	}
 
     public override Tuple<float, int> ChooseAngleAndSpeed(float x, float y, float angle, float otherX, float otherY, int health, int Tick)
     {
@@ -26,16 +26,16 @@ public partial class VragFrontRunning : Controller
         float distanceX = Mathf.Abs(otherX - x);
         float distanceY = Mathf.Abs(otherY - y);
 
-        float Shortalpha = Mathf.Atan2(dy, dx);
-        float Longalpha = Mathf.Atan2(Ldy, Ldx);
-        float Midlalpha = Mathf.Atan2(Mdy, Mdx);
+		float Shortalpha = Mathf.Atan2(dy, dx);
+		float Longalpha = Mathf.Atan2(Ldy, Ldx);
+		float Midlalpha = Mathf.Atan2(Mdy, Mdx);
 
         lastotherX = LotherX;
         lastotherY = LotherY;
         LotherX = otherX;
         LotherY = otherY;
 
-        //        Console.WriteLine("Tick = " + Game.Tick + "; lastotherX = " + lastotherX + "; otherX = " + otherX + "; Shortalpha = " + Shortalpha + "; Longalpha = " + Longalpha + "; Midlalpha = " + Midlalpha);
+		//        Console.WriteLine("Tick = " + Game.Tick + "; lastotherX = " + lastotherX + "; otherX = " + otherX + "; Shortalpha = " + Shortalpha + "; Longalpha = " + Longalpha + "; Midlalpha = " + Midlalpha);
 
 
         float alpha;
