@@ -3,7 +3,7 @@ using System;
 
 public abstract partial class Object : CharacterBody2D
 {
-	private static int SPEED_MULTIPLIER = 50;
+	public static int SPEED_MULTIPLIER = 50;
 
 	public static int MAX_HEALTH = 900;
 
@@ -24,6 +24,11 @@ public abstract partial class Object : CharacterBody2D
 		Rotate(alpha - Transform.Rotation);
 		Velocity = Transform.X * SPEED_MULTIPLIER * speed;
 	}
+
+	public int GetSpeed()
+	{
+		return (int)(Velocity.Length() / Transform.X.Length() / SPEED_MULTIPLIER);
+    }
 	internal void Stop()
 	{
 		Velocity = Vector2.Zero;
