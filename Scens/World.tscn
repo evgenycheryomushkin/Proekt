@@ -41,5 +41,6 @@ one_way_collision_margin = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(303, 300)
+position = Vector2(500, 500)
+scale = Vector2(1.67, 1.67)
 texture = ExtResource("6_jgnr6")

@@ -4,10 +4,14 @@ using System;
 public abstract partial class Object : CharacterBody2D
 {
 	public static int SPEED_MULTIPLIER = 50;
-
 	public static int MAX_HEALTH = 900;
+	// Чтобы посмотреть или поменять размеры окна нужно зайти в 
+	// Проект/Настройки проекта/Окно
+	protected static float XMAX = 1000;
+	protected static float YMAX = 1000;
 
 	public int Power = MAX_HEALTH;
+
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -28,7 +32,7 @@ public abstract partial class Object : CharacterBody2D
 	public int GetSpeed()
 	{
 		return (int)(Velocity.Length() / Transform.X.Length() / SPEED_MULTIPLIER);
-    }
+	}
 	internal void Stop()
 	{
 		Velocity = Vector2.Zero;

@@ -7,7 +7,7 @@ public partial class VragS : Object
 	public override void _Ready()
 	{
 		Game.vrag = this;
-		controller = new VragFrontRunning(0, 0, 600, 600);
+		controller = new VragFrontRunning(0, 0, XMAX, YMAX);
 	}
 
 	protected override Vector2 GetOpponentCoordinates()

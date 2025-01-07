@@ -21,7 +21,7 @@ public partial class Game : Node
 		GameStartTimeMs = Time.GetTicksMsec();
 	}
 
-	public override void _PhysicsProcess(double delta)
+	public override void _Process(double delta)
 	{
 		ulong time = Time.GetTicksMsec();
 		Tick = ((int)(time - GameStartTimeMs)) / SHAG;
@@ -43,17 +43,17 @@ public partial class Game : Node
 		{
 			vrag.ChangeSpeedAndDirection(Tick);
 			geroi.ChangeSpeedAndDirection(Tick);
-			GD.Print(String.Format(
-				"{0,6:#000.0}|{1,6:#000.0}|{2,6:#00}|" +
-				"{3,6:#000.0}|{4,6:#000.0}|" +
-                "{5,6:#000.0}|{6,6:#000.0}|{7,6:#00}|" +
-				"{8,6:000}|{9,6:000}|{10,6:000}",
-				geroi.Position.X, geroi.Position.Y, geroi.GetSpeed(), 
-				vrag.Position.X - geroi.Position.X, vrag.Position.Y - geroi.Position.Y,
-				vrag.Position.X, vrag.Position.Y, vrag.GetSpeed(),
-				geroi.Power, vrag.Power, Tick
+			//GD.Print(String.Format(
+				//"{0,6:#000.0}|{1,6:#000.0}|{2,6:#00}|" +
+				//"{3,6:#000.0}|{4,6:#000.0}|" +
+				//"{5,6:#000.0}|{6,6:#000.0}|{7,6:#00}|" +
+				//"{8,6:000}|{9,6:000}|{10,6:000}",
+				//geroi.Position.X, geroi.Position.Y, geroi.GetSpeed(), 
+				//vrag.Position.X - geroi.Position.X, vrag.Position.Y - geroi.Position.Y,
+				//vrag.Position.X, vrag.Position.Y, vrag.GetSpeed(),
+				//geroi.Power, vrag.Power, Tick
+			//));
 
-			));
 		}
 	}
 
