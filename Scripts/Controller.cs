@@ -3,7 +3,7 @@ using System;
 
 public abstract partial class Controller
 {
-	float x0, y0, xMax, yMax;
+	protected float x0, y0, xMax, yMax;
 	public Controller(float x0, float y0, float xMax, float yMax)
 	{
 		this.x0 = x0;

@@ -20,6 +20,6 @@ public partial class VragController : Controller
 			if (health > 20) speed = 20;
 		}
 	
-		return new Tuple<float, int>(alpha, 5);
+		return new Tuple<float, int>(alpha, speed);
 	}
 }
