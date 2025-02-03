@@ -25,8 +25,8 @@ public partial class DangerZoneGeroiController : Controller
 			a = Mathf.Atan2(destination[2] - y, destination[1] - x);
 			s = (int)(destination[0] / 5);
 			int smax;
-			if (health > 25) {
-				smax = 25;
+			if (health > 20) {
+				smax = 20;
 			} else {
 				smax = health; 
 			}
@@ -34,14 +34,14 @@ public partial class DangerZoneGeroiController : Controller
 				s = smax;
 			}
 		}
-		GD.Print(String.Format(
-			"{0,6:#000.0}|{1,6:#000.0}|" +
-			"{2,6:#000.0}|{3,6:#000.0}|" +
-			"{4,6:#000.0}|{5,6:#000}|{6,6:#000}|" +
-			"{7,8:#000.0}|{8,8:#000.0}|{9,8:#000}", 
-			x, y, otherX, otherY, a, s, inDangerZone ? "D" : " ", 
-			destination[1], destination[2], health
-		));
+		//GD.Print(String.Format(
+			//"{0,6:#000.0}|{1,6:#000.0}|" +
+			//"{2,6:#000.0}|{3,6:#000.0}|" +
+			//"{4,6:#000.0}|{5,6:#000}|{6,6:#000}|" +
+			//"{7,8:#000.0}|{8,8:#000.0}|{9,8:#000}", 
+			//x, y, otherX, otherY, a, s, inDangerZone ? "D" : " ", 
+			//destination[1], destination[2], health
+		//));
 		
 		return new Tuple<float, int>(a, s);
 	}
