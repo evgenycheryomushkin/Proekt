@@ -17,3 +17,14 @@
 
 
 2025 год
+
+
+Стратегии героя
+GeroiCircleController
+DangerZoneGeroiController
+
+Стратегии врага
+VragController
+VragFrontRunning
+
+Чтобы поменять стратегию - нужно поменять соответствующий класс в GgS или VragS классе.
