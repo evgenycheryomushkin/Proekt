@@ -16,9 +16,9 @@ public partial class VragController : Controller
 		float alpha = Mathf.Atan2(dy, dx);
 		
 		int speed = 4;
-		if (tick > 400) {
-			if (health > 20) speed = 20;
-		}
+		//if (tick > 400) {
+			//if (health > 20) speed = 20;
+		//}
 	
 		return new Tuple<float, int>(alpha, speed);
 	}

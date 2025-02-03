@@ -27,7 +27,7 @@ shape = SubResource("RectangleShape2D_84v3q")
 one_way_collision_margin = 0.0
 
 [node name="Gg" type="CharacterBody2D" parent="."]
-position = Vector2(559, 299)
+position = Vector2(833, 174)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_c8hp7")
 metadata/_edit_group_ = true
